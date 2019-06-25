@@ -37,8 +37,8 @@ const fetchLogin = service => () => async (dispatch, getState) => {
 	dispatch(fetchLoginRequestAC());
 
 	try {
-		const data = await service.tryLogin(userNameText, passwordText);
-		const { status, message } = data;
+		const response = await service.tryLogin(userNameText, passwordText);
+		const { status, message, data } = response;
 
 		if (status === 'ok') {
 			localStorage.setItem('token', true);
