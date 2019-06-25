@@ -30,7 +30,7 @@ export default class AuthService {
 	};
 
 	getUser = async id => {
-		const endPoint = `user-info/:${id}`;
+		const endPoint = `user-info/${id}`;
 		const response = await this._axiosInstance.get(endPoint);
 
 		return this._getResourse(response, endPoint);

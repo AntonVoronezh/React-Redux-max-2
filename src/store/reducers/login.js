@@ -1,6 +1,7 @@
 import { CHANGE_USERNAME_TEXT, CHANGE_PASSWORD_TEXT } from '../actions';
-import { statuses } from '../../helpers';
 import { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE, LOGOUT } from '../actions';
+
+import { statuses } from '../../helpers';
 
 const initialState = {
 	userNameText: '',

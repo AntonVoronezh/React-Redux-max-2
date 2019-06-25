@@ -38,10 +38,9 @@ const fetchProfile = service => () => async (dispatch, getState) => {
 			message,
 			data,
 		} = response;
-debugger
+
 		if (status === 'ok') {
-			localStorage.setItem('token', true);
-			dispatch(fetchProfileSuccessAC());
+			dispatch(fetchProfileSuccessAC(data));
 		} else if (status === 'err') {
 			dispatch(fetchProfileFailureAC(message));
 		}
