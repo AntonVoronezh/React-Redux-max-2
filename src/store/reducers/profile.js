@@ -1,15 +1,17 @@
-import { CHANGE_ACTIVE_PAGE } from '../actions';
+import { ADD_PROFILE_ID } from '../actions';
 
 const initialState = {
-	activePage: '/',
+	id: null,
 };
 
 const profileRreducer = (state = initialState, action) => {
-	switch (action.type) {
-		case CHANGE_ACTIVE_PAGE: {
+	const { type, id } = action;
+	
+	switch (type) {
+		case ADD_PROFILE_ID: {
 			return {
 				...state,
-				activePage: action.page,
+				id,
 			};
 		}
 		default:
