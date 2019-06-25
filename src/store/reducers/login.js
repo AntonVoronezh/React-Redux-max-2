@@ -12,7 +12,7 @@ const initialState = {
 
 const updateText = (oldText, payload) => {
 	if (payload === null) {
-		return oldText(0, oldText.length - 1);
+		return oldText.slice(0, oldText.length - 1);
 	}
 	return oldText + payload;
 };

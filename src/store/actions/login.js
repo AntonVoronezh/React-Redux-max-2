@@ -1,3 +1,5 @@
+import { addProfileIdAC } from '../actions';
+
 const CHANGE_USERNAME_TEXT = 'CHANGE_USERNAME_TEXT';
 const changeUsernameTextAC = text => ({
 	type: CHANGE_USERNAME_TEXT,
@@ -38,18 +40,22 @@ const fetchLogin = service => () => async (dispatch, getState) => {
 
 	try {
 		const response = await service.tryLogin(userNameText, passwordText);
-		const { status, message, data } = response;
+		const {
+			status,
+			message,
+			data: { id },
+		} = response;
 
 		if (status === 'ok') {
 			localStorage.setItem('token', true);
 			dispatch(fetchLoginSuccessAC());
+			// dispatch(addProfileIdAC(id));
 		} else if (status === 'err') {
 			dispatch(fetchLoginFailureAC(message));
 		}
 	} catch (err) {
 		dispatch(fetchLoginFailureAC(err.message));
 	}
-
 };
 
 export { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE, fetchLogin };
