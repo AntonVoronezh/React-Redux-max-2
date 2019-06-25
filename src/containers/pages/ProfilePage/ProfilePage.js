@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { ProfilePage } from '../../../components/pages';
+import { Spinner } from '../../../components/elements';
 import { fetchProfile } from '../../../store/actions';
 import { withAuthService } from '../../../hoc';
+import { statuses } from '../../../helpers';
 
 class ProfilePageContainer extends Component {
 	componentDidUpdate(prevProps) {
@@ -16,20 +18,24 @@ class ProfilePageContainer extends Component {
 	}
 
 	render() {
-		const { isLoggedIn, ...rest } = this.props;
+		const { isLoggedIn, status, ...rest } = this.props;
 
 		if (!isLoggedIn) {
 			return <Redirect to="/login" />;
+		}
+
+		if (status === statuses.REQUEST) {
+			return <Spinner />;
 		}
 
 		return <ProfilePage {...rest} />;
 	}
 }
 
-const mapStateToProps = ({ login: { isLoggedIn }, profile: { id } }) => {
+const mapStateToProps = ({ login: { isLoggedIn }, profile }) => {
 	return {
 		isLoggedIn,
-		id,
+		profile,
 	};
 };
 

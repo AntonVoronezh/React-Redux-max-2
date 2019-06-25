@@ -27,6 +27,7 @@ const profileRreducer = (state = initialState, action) => {
 			};
 		}
 		case FETCH_PROFILE_SUCCESS: {
+			debugger
 			return {
 				...state,
 				status: statuses.SUCCESS,

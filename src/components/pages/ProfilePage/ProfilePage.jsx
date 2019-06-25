@@ -2,7 +2,8 @@ import React from 'react';
 
 import './ProfilePage.scss';
 
-const ProfilePage = () => {
+const ProfilePage = (ggg) => {
+// debugger
 	return <h2>ProfilePage</h2>;
 };
 
