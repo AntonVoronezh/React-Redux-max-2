@@ -1,7 +1,7 @@
 import { ADD_PROFILE_ID } from '../actions';
+import { FETCH_PROFILE_REQUEST, FETCH_PROFILE_SUCCESS, FETCH_PROFILE_FAILURE } from '../actions';
 
 import { statuses } from '../../helpers';
-
 
 const initialState = {
 	id: null,
@@ -15,10 +15,30 @@ const profileRreducer = (state = initialState, action) => {
 
 	switch (type) {
 		case ADD_PROFILE_ID: {
-			debugger
 			return {
 				...state,
 				id,
+			};
+		}
+		case FETCH_PROFILE_REQUEST: {
+			return {
+				status: statuses.REQUEST,
+				errorMsg: null,
+			};
+		}
+		case FETCH_PROFILE_SUCCESS: {
+			return {
+				...state,
+				status: statuses.SUCCESS,
+				profile,
+				errorMsg: null,
+			};
+		}
+		case FETCH_PROFILE_FAILURE: {
+			return {
+				...state,
+				status: statuses.FAILURE,
+				errorMsg,
 			};
 		}
 		default:
