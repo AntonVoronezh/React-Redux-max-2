@@ -8,7 +8,7 @@ const addProfileIdAC = id => ({
 export { addProfileIdAC, ADD_PROFILE_ID };
 
 const FETCH_PROFILE_REQUEST = 'FETCH_PROFILE_REQUEST';
-const fetchProfileequestAC = () => ({
+const fetchProfileRequestAC = () => ({
 	type: FETCH_PROFILE_REQUEST,
 });
 
@@ -24,4 +24,30 @@ const fetchProfileFailureAC = errorMsg => ({
 	errorMsg,
 });
 
-export { FETCH_PROFILE_REQUEST, FETCH_PROFILE_SUCCESS, FETCH_PROFILE_FAILURE };
+const fetchProfile = service => () => async (dispatch, getState) => {
+	const {
+		profile: { id },
+	} = getState();
+
+	dispatch(fetchProfileRequestAC());
+
+	try {
+		const response = await service.getUser(id);
+		const {
+			status,
+			message,
+			data,
+		} = response;
+debugger
+		if (status === 'ok') {
+			localStorage.setItem('token', true);
+			dispatch(fetchProfileSuccessAC());
+		} else if (status === 'err') {
+			dispatch(fetchProfileFailureAC(message));
+		}
+	} catch (err) {
+		dispatch(fetchProfileFailureAC(err.message));
+	}
+};
+
+export { FETCH_PROFILE_REQUEST, FETCH_PROFILE_SUCCESS, FETCH_PROFILE_FAILURE, fetchProfile };

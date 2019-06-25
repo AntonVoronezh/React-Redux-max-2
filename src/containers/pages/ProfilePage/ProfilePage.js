@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { ProfilePage } from '../../../components/pages';
+import { fetchProfile } from '../../../store/actions';
 
 class ProfilePageContainer extends Component {
 	render() {
@@ -21,5 +22,13 @@ const mapStateToProps = ({ login: { isLoggedIn } }) => {
 		isLoggedIn,
 	};
 };
+const mapDispatchToProps = ({ login: { isLoggedIn } }) => {
+	return {
+		isLoggedIn,
+	};
+};
 
-export default connect(mapStateToProps)(ProfilePageContainer);
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(ProfilePageContainer);
