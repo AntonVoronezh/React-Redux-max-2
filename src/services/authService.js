@@ -29,4 +29,12 @@ export default class AuthService {
 		return this._getResourse(response, endPoint);
 	};
 
+	getUser = async id => {
+		const endPoint = `user-info/:${id}`;
+		const response = await this._axiosInstance.get(endPoint);
+
+		return this._getResourse(response, endPoint);
+	};
+
 }
+
