@@ -15,6 +15,8 @@ import { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE } from '.
 
 import { FETCH_NEWS_REQUEST, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAILURE, fetchNews } from './news';
 
+import { addProfileIdAC, ADD_PROFILE_ID } from './profile';
+
 export {
 	changeActivePageAC,
 	CHANGE_ACTIVE_PAGE,
@@ -32,3 +34,5 @@ export {
 };
 
 export { FETCH_NEWS_REQUEST, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAILURE, fetchNews };
+
+export { addProfileIdAC, ADD_PROFILE_ID };

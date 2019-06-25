@@ -6,7 +6,7 @@ const initialState = {
 
 const profileRreducer = (state = initialState, action) => {
 	const { type, id } = action;
-	
+
 	switch (type) {
 		case ADD_PROFILE_ID: {
 			return {
