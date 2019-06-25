@@ -10,13 +10,12 @@ export default class AuthService {
 	});
 
 
-	_getResourse =  async (response, url) => {
+	_getResourse =  (response, url) => {
 		if (!response.status === 200) {
 			throw new Error(`Could not fetch ${url}, resived ${response.status}`);
 		}
 		
-		const body = await response.data;
-		return body;
+		return response.data;
 	};
 
 	tryLogin = async (email, password) => {

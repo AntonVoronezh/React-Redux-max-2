@@ -39,7 +39,7 @@ const fetchLogin = service => () => async (dispatch, getState) => {
 	try {
 		const data = await service.tryLogin(userNameText, passwordText);
 		const { status, message } = data;
-		
+
 		if (status === 'ok') {
 			localStorage.setItem('token', true);
 			dispatch(fetchLoginSuccessAC());
@@ -50,17 +50,6 @@ const fetchLogin = service => () => async (dispatch, getState) => {
 		dispatch(fetchLoginFailureAC(err.message));
 	}
 
-	// .then(data => {
-	// 	const { status, message } = data;
-	// 	if (status === 'ok') {
-	// 		localStorage.setItem('token', true);
-	// 		dispatch(fetchLoginSuccessAC());
-	// 	} else if (status === 'err') {
-	// 		dispatch(fetchLoginFailureAC(message));
-	// 	}
-	// })
-
-	// .catch(err => dispatch(fetchLoginFailureAC(err.message)));
 };
 
 export { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE, fetchLogin };
