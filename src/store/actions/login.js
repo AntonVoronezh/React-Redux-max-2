@@ -49,7 +49,7 @@ const fetchLogin = service => () => async (dispatch, getState) => {
 		if (status === 'ok') {
 			localStorage.setItem('token', true);
 			dispatch(fetchLoginSuccessAC());
-			// dispatch(addProfileIdAC(id));
+			dispatch(addProfileIdAC(id));
 		} else if (status === 'err') {
 			dispatch(fetchLoginFailureAC(message));
 		}
